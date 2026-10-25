@@ -1,0 +1,40 @@
+{
+    "name": "catalog-e2e-test",
+    "description": "E2E tests for catalog of movies, shows, games, music, programs, books and jokes",
+    "author": {
+        "name": "Vladimir Hromada",
+        "email": "vhromada@gmail.com"
+    },
+    "version": "26.1",
+    "private": true,
+    "license": "MIT",
+    "type": "module",
+    "scripts": {
+        "test": "playwright test",
+        "test:ui": "playwright test --ui",
+        "type-check": "tsc --noEmit",
+        "lint": "eslint . --fix",
+        "build:be": "node scripts/build-be.mjs",
+        "build:fe": "node scripts/build-fe.mjs",
+        "build:docker": "docker compose -f docker/compose.yaml build",
+        "docker:up": "docker compose -f docker/compose.yaml up -d",
+        "docker:down": "docker compose -f docker/compose.yaml down -v",
+        "wait": "node scripts/wait-for-health.mjs",
+        "test:e2e": "node scripts/run-e2e.mjs"
+    },
+    "dependencies": {
+        "axios": "^1.20.0",
+        "bcrypt-ts": "^9.0.2",
+        "dotenv": "^18.0.9"
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@playwright/test": "^1.64.1",
+        "@types/node": "^26.6.5",
+        "@typescript-eslint/eslint-plugin": "^8.72.0",
+        "@typescript-eslint/parser": "^8.72.0",
+        "eslint": "^10.13.0",
+        "globals": "^17.13.0",
+        "typescript": "6.0.3"
+    }
+}
