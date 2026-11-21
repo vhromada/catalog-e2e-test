@@ -5,7 +5,7 @@
         "name": "Vladimir Hromada",
         "email": "vhromada@gmail.com"
     },
-    "version": "26.2-SNAPSHOT",
+    "version": "26.2",
     "private": true,
     "license": "MIT",
     "type": "module",
