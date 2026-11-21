@@ -1,12 +1,14 @@
 import { cheatApi } from '../../api/resources/CheatApi';
 import { gameApi } from '../../api/resources/GameApi';
+import { handbookApi } from '../../api/resources/HandbookApi';
+import { walkthroughApi } from '../../api/resources/WalkthroughApi';
 import { expect, test } from '../../fixtures/test';
 import { CatalogPage } from '../../pages/CatalogPage';
 import { GameDetailPage } from '../../pages/games/GameDetailPage';
 import { GameFormPage } from '../../pages/games/GameFormPage';
 import { GameListPage } from '../../pages/games/GameListPage';
 import { LoginPage } from '../../pages/LoginPage';
-import { cheatRequest, gameRequest, ITEMS_PER_PAGE, pagesCount } from '../../utils/testData';
+import { cheatRequest, gameRequest, handbookRequest, ITEMS_PER_PAGE, pagesCount, walkthroughRequest } from '../../utils/testData';
 
 test.describe('game list (/games)', () => {
 
@@ -214,6 +216,68 @@ test.describe('game list (/games)', () => {
       await gameListPage.cheatsLink(game.name).click();
 
       await expect(authedPage).toHaveURL(new RegExp(`/games/${game.uuid}/cheats$`));
+    } finally {
+      await gameApi.delete(game.uuid);
+    }
+  });
+
+  test('opens add walkthrough for a game without walkthrough', async ({authedPage}) => {
+    const game = await gameApi.create(gameRequest());
+    try {
+      const gameListPage = new GameListPage(authedPage);
+      await gameListPage.goto();
+      await gameListPage.search(game.name);
+      await expect(gameListPage.walkthroughsLink(game.name)).toHaveText('Add walkthrough');
+      await gameListPage.walkthroughsLink(game.name).click();
+
+      await expect(authedPage).toHaveURL(new RegExp(`/games/${game.uuid}/walkthroughs/add$`));
+    } finally {
+      await gameApi.delete(game.uuid);
+    }
+  });
+
+  test('opens walkthroughs for a game with walkthrough', async ({authedPage}) => {
+    const game = await gameApi.create(gameRequest());
+    try {
+      await walkthroughApi.create(game.uuid, walkthroughRequest());
+      const gameListPage = new GameListPage(authedPage);
+      await gameListPage.goto();
+      await gameListPage.search(game.name);
+      await expect(gameListPage.walkthroughsLink(game.name)).toHaveText('Walkthroughs');
+      await gameListPage.walkthroughsLink(game.name).click();
+
+      await expect(authedPage).toHaveURL(new RegExp(`/games/${game.uuid}/walkthroughs$`));
+    } finally {
+      await gameApi.delete(game.uuid);
+    }
+  });
+
+  test('opens add handbook for a game without handbook', async ({authedPage}) => {
+    const game = await gameApi.create(gameRequest());
+    try {
+      const gameListPage = new GameListPage(authedPage);
+      await gameListPage.goto();
+      await gameListPage.search(game.name);
+      await expect(gameListPage.handbooksLink(game.name)).toHaveText('Add handbook');
+      await gameListPage.handbooksLink(game.name).click();
+
+      await expect(authedPage).toHaveURL(new RegExp(`/games/${game.uuid}/handbooks/add$`));
+    } finally {
+      await gameApi.delete(game.uuid);
+    }
+  });
+
+  test('opens handbooks for a game with handbook', async ({authedPage}) => {
+    const game = await gameApi.create(gameRequest());
+    try {
+      await handbookApi.create(game.uuid, handbookRequest());
+      const gameListPage = new GameListPage(authedPage);
+      await gameListPage.goto();
+      await gameListPage.search(game.name);
+      await expect(gameListPage.handbooksLink(game.name)).toHaveText('Handbooks');
+      await gameListPage.handbooksLink(game.name).click();
+
+      await expect(authedPage).toHaveURL(new RegExp(`/games/${game.uuid}/handbooks$`));
     } finally {
       await gameApi.delete(game.uuid);
     }

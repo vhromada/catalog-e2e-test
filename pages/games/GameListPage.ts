@@ -65,6 +65,14 @@ export class GameListPage {
     return this.row(name).first().locator('td[data-nav="cheats"] a');
   }
 
+  walkthroughsLink(name: string): Locator {
+    return this.row(name).first().locator('td[data-nav="walkthroughs"] a');
+  }
+
+  handbooksLink(name: string): Locator {
+    return this.row(name).first().locator('td[data-nav="handbooks"] a');
+  }
+
   async edit(name: string): Promise<void> {
     await this.row(name).first().locator('td[data-nav="edit"] a').click();
   }

@@ -11,6 +11,8 @@ const routes = [
   {name: 'edit game', path: `/games/${INVALID_UUID}`},
   {name: 'game detail', path: `/games/${INVALID_UUID}/detail`},
   {name: 'edit cheats', path: `/games/${INVALID_UUID}/cheats/${INVALID_UUID}`},
+  {name: 'edit walkthroughs', path: `/games/${INVALID_UUID}/walkthroughs/${INVALID_UUID}`},
+  {name: 'edit handbooks', path: `/games/${INVALID_UUID}/handbooks/${INVALID_UUID}`},
   {name: 'edit genre', path: `/genres/${INVALID_UUID}`},
   {name: 'edit joke', path: `/jokes/${INVALID_UUID}`},
   {name: 'joke detail', path: `/jokes/${INVALID_UUID}/detail`},

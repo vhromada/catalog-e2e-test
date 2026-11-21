@@ -17,6 +17,8 @@ export interface Game {
   otherData?: string;
   note?: string;
   cheat: boolean;
+  walkthrough: boolean;
+  handbook: boolean;
 }
 
 export interface Statistics {

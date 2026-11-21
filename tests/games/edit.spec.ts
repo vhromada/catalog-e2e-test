@@ -102,7 +102,9 @@ test.describe('edit game (/games/:uuid)', () => {
         saves: true,
         otherData: 'New other data',
         note: 'New note',
-        cheat: false
+        cheat: false,
+        walkthrough: false,
+        handbook: false
       });
     } finally {
       await gameApi.delete(game.uuid);

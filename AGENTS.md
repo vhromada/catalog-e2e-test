@@ -19,6 +19,17 @@ This document provides essential information for AI agents (Claude, Copilot, Cur
 - **Docker stack:** `npm run build:be`, `npm run build:fe`, `npm run build:docker`, `npm run docker:up`, `npm run wait`, `npm run docker:down`
 - **Lint:** `npm run lint` / **Type check:** `npm run type-check`
 
+### Project skills (`.claude/skills/`)
+Six skills codify the per-area conventions below so they're enforced consistently rather than just by imitating existing code. `new-resource` is the entry point for adding a whole new resource —
+it sequences the other five:
+- **`new-resource`**: orchestrator for adding a complete new resource end-to-end; gathers the resource spec, sequences the area skills below in the right order, hosts the shared
+  `conventions.md` reference.
+- **`api-client`**: BE API client in `api/resources/` (interfaces, object literal, no update method, nested variants).
+- **`test-data`**: `utils/testData.ts` factory (alphabetical placement, `uniqueName()` vs `credentials()`, positional relation uuids).
+- **`page-objects`**: page objects in `pages/<resource>/` (no base classes, locator/method ordering, shared add+edit form, nested parent uuids).
+- **`resource-specs`**: one spec per FE route in `tests/<resource>/` (test rosters, auth redirect first, try/finally cleanup, `toPass()` wrapper, paging).
+- **`catalog-wiring`**: cross-cutting registries (`pages/CatalogPage.ts`, `tests/catalog/*`, `tests/notFound/*`) a finished resource must be added to.
+
 ## ⚙️ Configuration
 
 - `.env` (committed): `FE_BASE_URL` (fallback `http://localhost:8010`), `BE_BASE_URL` (fallback `http://localhost:8110`), `CATALOG_USERNAME`, `CATALOG_PASSWORD`,

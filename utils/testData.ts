@@ -9,6 +9,7 @@ import type { ChangeCheatRequest } from '../api/resources/CheatApi';
 import type { ChangeEpisodeRequest } from '../api/resources/EpisodeApi';
 import type { ChangeGameRequest } from '../api/resources/GameApi';
 import type { ChangeGenreRequest } from '../api/resources/GenreApi';
+import type { ChangeHandbookRequest } from '../api/resources/HandbookApi';
 import type { ChangeJokeRequest } from '../api/resources/JokeApi';
 import type { ChangeMovieRequest } from '../api/resources/MovieApi';
 import type { ChangeMusicRequest } from '../api/resources/MusicApi';
@@ -16,6 +17,7 @@ import type { ChangeProgramRequest } from '../api/resources/ProgramApi';
 import type { ChangeSeasonRequest } from '../api/resources/SeasonApi';
 import type { ChangeShowRequest } from '../api/resources/ShowApi';
 import type { ChangeSongRequest } from '../api/resources/SongApi';
+import type { ChangeWalkthroughRequest } from '../api/resources/WalkthroughApi';
 
 export const ITEMS_PER_PAGE = Number(requireEnv('ITEMS_PER_PAGE'));
 
@@ -106,6 +108,13 @@ export function gameRequest(overrides: Partial<ChangeGameRequest> = {}): ChangeG
 export function genreRequest(overrides: Partial<ChangeGenreRequest> = {}): ChangeGenreRequest {
   return {
     name: uniqueName('Genre'),
+    ...overrides
+  };
+}
+
+export function handbookRequest(overrides: Partial<ChangeHandbookRequest> = {}): ChangeHandbookRequest {
+  return {
+    content: uniqueName('Handbook'),
     ...overrides
   };
 }
@@ -215,6 +224,13 @@ export function songRequest(overrides: Partial<ChangeSongRequest> = {}): ChangeS
   return {
     name: uniqueName('Song'),
     length: 60,
+    ...overrides
+  };
+}
+
+export function walkthroughRequest(overrides: Partial<ChangeWalkthroughRequest> = {}): ChangeWalkthroughRequest {
+  return {
+    content: uniqueName('Walkthrough'),
     ...overrides
   };
 }

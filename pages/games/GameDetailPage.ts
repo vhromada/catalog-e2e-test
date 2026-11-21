@@ -5,6 +5,10 @@ export class GameDetailPage {
   readonly heading: Locator;
   readonly cheatsLink: Locator;
   readonly addCheatsLink: Locator;
+  readonly walkthroughsLink: Locator;
+  readonly addWalkthroughsLink: Locator;
+  readonly handbooksLink: Locator;
+  readonly addHandbooksLink: Locator;
   readonly wikiCzLink: Locator;
   readonly wikiEnLink: Locator;
 
@@ -12,7 +16,11 @@ export class GameDetailPage {
     this.heading = page.getByRole('heading', {name: 'Game detail'});
     this.cheatsLink = page.locator('tbody tr td[colspan="2"] a', {hasText: /^Cheats$/});
     this.addCheatsLink = page.locator('tbody tr td[colspan="2"] a', {hasText: /^Add cheats$/});
-    this.wikiCzLink = page.locator('tbody tr td[colspan="2"] a', {hasText: 'Czech Wikipedia'});
+    this.walkthroughsLink = page.locator('tbody tr td[colspan="2"] a', {hasText: /^Walkthroughs$/});
+    this.addWalkthroughsLink = page.locator('tbody tr td[colspan="2"] a', {hasText: /^Add walkthrough$/});
+    this.handbooksLink = page.locator('tbody tr td[colspan="2"] a', {hasText: /^Handbooks$/});
+    this.addHandbooksLink = page.locator('tbody tr td[colspan="2"] a', {hasText: /^Add handbook$/});
+    this.wikiCzLink =page.locator('tbody tr td[colspan="2"] a', {hasText: 'Czech Wikipedia'});
     this.wikiEnLink = page.locator('tbody tr td[colspan="2"] a', {hasText: 'English Wikipedia'});
   }
 
