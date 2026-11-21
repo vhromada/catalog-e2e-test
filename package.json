@@ -5,7 +5,7 @@
         "name": "Vladimir Hromada",
         "email": "vhromada@gmail.com"
     },
-    "version": "26.1",
+    "version": "26.2-SNAPSHOT",
     "private": true,
     "license": "MIT",
     "type": "module",
@@ -23,18 +23,18 @@
         "test:e2e": "node scripts/run-e2e.mjs"
     },
     "dependencies": {
-        "axios": "^1.20.0",
-        "bcrypt-ts": "^9.0.2",
-        "dotenv": "^18.0.9"
+        "axios": "^1.21.1",
+        "bcrypt-ts": "^9.0.3",
+        "dotenv": "^18.0.10"
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",
-        "@playwright/test": "^1.64.1",
-        "@types/node": "^26.6.5",
-        "@typescript-eslint/eslint-plugin": "^8.72.0",
-        "@typescript-eslint/parser": "^8.72.0",
-        "eslint": "^10.13.0",
-        "globals": "^17.13.0",
+        "@playwright/test": "^1.65.1",
+        "@types/node": "^26.6.6",
+        "@typescript-eslint/eslint-plugin": "^8.73.0",
+        "@typescript-eslint/parser": "^8.73.0",
+        "eslint": "^10.15.0",
+        "globals": "^17.14.0",
         "typescript": "6.0.3"
     }
 }

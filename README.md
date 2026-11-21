@@ -19,7 +19,7 @@ echo "HASH_SALT=<salt>" > .env.local   # secret, see Configuration
 ## Configuration
 
 | Variable           | File         | Used by                   | Description                                                                                                                  |
-|--------------------|--------------|---------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| ------------------ | ------------ | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `FE_BASE_URL`      | `.env`       | tests, `wait`             | URL of the Catalog FE under test (falls back to `http://localhost:8010` when unset)                                          |
 | `BE_BASE_URL`      | `.env`       | tests, `build:fe`, `wait` | URL of the Catalog BE (test data API, FE `config.json`, health check; tests and `wait` fall back to `http://localhost:8110`) |
 | `CATALOG_USERNAME` | `.env`       | `build:fe`                | BE username written to the FE `config.json` (required)                                                                       |
@@ -37,7 +37,7 @@ Real environment variables take precedence over both files. `CATALOG_USERNAME` a
 ## Commands
 
 | Command                | Description                                                               |
-|------------------------|---------------------------------------------------------------------------|
+| ---------------------- | ------------------------------------------------------------------------- |
 | `npm run test`         | Run all tests (the application must be running)                           |
 | `npm run test:ui`      | Run tests in Playwright UI mode                                           |
 | `npm run test:e2e`     | Full cycle: build BE + FE, start Docker stack, wait, run tests, tear down |

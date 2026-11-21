@@ -32,7 +32,6 @@ This document provides essential information for AI agents (Claude, Copilot, Cur
 ## 📝 Coding Standards
 
 - Strict TypeScript, no `any` without justification.
-- **Markdown:** lines are at most 200 characters; wrap longer paragraphs and bullets at that width and indent continuation lines of a list item.
 - One page object per FE route/page in `pages/` (no base classes; a `pages/<resource>/` subfolder only when a resource has more than one page). A form shared by add and edit routes is one page object
   (e.g. `GenreFormPage`).
 - One spec file per FE route in `tests/<resource>/` (e.g. `list.spec.ts`, `add.spec.ts`, `edit.spec.ts`), each covering everything the route offers: rendering, auth redirect, BE persistence, prefill
@@ -44,6 +43,8 @@ This document provides essential information for AI agents (Claude, Copilot, Cur
 - Usernames must stay short (BE audit columns are `VARCHAR(36)`): use `credentials()`, not `uniqueName()`.
 - Do not commit generated `docker/fe/dist/`.
 - Run `npm run lint` and `npm run type-check` before considering a change done.
+- **Markdown:** lines are at most 200 characters, except table rows. When wrapping, fill each line as close to 200 characters as possible instead of using several shorter lines, and indent
+  continuation lines of a list item. Format tables for readability: spaces only (no tabs), every cell padded so the `|` separators align, and separator rows filled with `-` to the full column width.
 
 ## 📂 Project Structure
 

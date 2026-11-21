@@ -19,9 +19,9 @@ Read the current `"version": "..."` from `package.json`. It is used for searchin
 
 ## 3. Edit the files
 
-| File                | Change                                                                                                        |
-|---------------------|---------------------------------------------------------------------------------------------------------------|
-| `package.json`      | top-level `"version": "<version>"`                                                                            |
+| File                | Change                                                                                                             |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `package.json`      | top-level `"version": "<version>"`                                                                                 |
 | `package-lock.json` | top-level `"version"` (line 3) and `"version"` of `packages[""]` (line 9) — edit by hand, do not run `npm install` |
 
 Verify with Grep that exactly these three occurrences of the old version were replaced.
